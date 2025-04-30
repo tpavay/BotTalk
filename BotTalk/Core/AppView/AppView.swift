@@ -24,26 +24,12 @@ struct AppView: View {
         AppViewBuilder(
             userCompletedOnboarding: userCompletedOnboarding,
             onboardingView: {
-                mockOnboardingView
+                WelcomeView()
             },
             tabbarView: {
-                mockTabbarView
+                TabBarView()
             }
         )
-    }
-    
-    private var mockOnboardingView: some View {
-        ZStack {
-            Color.blue.ignoresSafeArea()
-            Text("Mock OnboardingView")
-        }
-    }
-    
-    private var mockTabbarView: some View {
-        ZStack {
-            Color.red.ignoresSafeArea()
-            Text("Mock TabbarView")
-        }
     }
 }
 
