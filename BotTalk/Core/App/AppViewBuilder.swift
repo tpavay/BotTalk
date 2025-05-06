@@ -11,9 +11,9 @@ import SwiftUI
 /// has completed onboarding or not.
 struct AppViewBuilder<OnboardingView: View, TabbarView: View>: View {
     
-    /// Whether or not the user has completed onboarding
-    var userCompletedOnboarding: Bool
-    
+    /// Whether or not to show the tab bar view
+    var showTabBar: Bool
+
     /// Onboarding view to show if the user hasn't completed onboarding
     @ViewBuilder var onboardingView: OnboardingView
     
@@ -22,7 +22,7 @@ struct AppViewBuilder<OnboardingView: View, TabbarView: View>: View {
     
     var body: some View {
         ZStack {
-            if !userCompletedOnboarding {
+            if !showTabBar {
                 onboardingView
                 // Push the onboarding view onto the screen
                 // moving in from the leading edge
@@ -35,17 +35,17 @@ struct AppViewBuilder<OnboardingView: View, TabbarView: View>: View {
                 .transition(.move(edge: .trailing))
             }
         }
-        .animation(.smooth, value: userCompletedOnboarding)
+        .animation(.smooth, value: showTabBar)
     }
 }
 
 /// This view is specific to this file and is used to show a preview of this view
 private struct PreviewView: View {
-    @State var userCompletedOnboarding: Bool = false
-    
+    @State var showTabBar: Bool = false
+
     var body: some View {
         AppViewBuilder(
-            userCompletedOnboarding: userCompletedOnboarding,
+            showTabBar: showTabBar,
             onboardingView: {
                 ZStack {
                     Color.blue.ignoresSafeArea()
@@ -60,7 +60,7 @@ private struct PreviewView: View {
             }
         )
         .onTapGesture {
-            userCompletedOnboarding.toggle()
+            showTabBar.toggle()
         }
     }
 }

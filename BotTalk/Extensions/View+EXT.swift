@@ -7,12 +7,14 @@
 
 import SwiftUI
 
-struct View_EXT: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+extension View {
+    
+    /// Modifier that applies CTA button styles to the view 
+    func callToActionButton() -> some View {
+        self
+            .foregroundStyle(.white)
+            .frame(height: 55)
+            .frame(maxWidth: .infinity)
+            .background(.accent, in: .rect(cornerRadius: 10))
     }
-}
-
-#Preview {
-    View_EXT()
 }

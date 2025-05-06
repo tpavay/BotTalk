@@ -14,7 +14,7 @@ struct ProfileView: View {
         NavigationStack {
             Text("Profile")
                 .navigationTitle("Profile")
-                .fullScreenCover(
+                .sheet(
                     isPresented: $showSettingsSheet,
                     content: { SettingsView() }
                 )
